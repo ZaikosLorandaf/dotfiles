@@ -1,0 +1,9 @@
+#!/bin/sh
+
+wall="/vault/Wallpaper/Shared/Wallpaper_$1.*"
+fileExt="$(echo $wall | sed 's/.*$//')"
+
+wallDir="$XDG_CONFIG_HOME/wallpapers"
+rm -rf $wallDir/DP-$2.*
+
+ln -sf  $wall $wallDir/DP-$2.$fileExt

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+setwall $1 $2 && makewall

@@ -1,13 +1,13 @@
 # Path
 export SCRIPTS=$HOME/.local/bin
 export PATH=$PATH$( find $SCRIPTS/ -type d -printf ":%p" )
-export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$HOME/.cargo/bin
+# export GOPATH=$HOME/.go
+# export PATH=$PATH:$GOPATH/bin
+# export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/root/.local/bin
 export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/usr/local/go/bin
+# export PATH=$PATH:/usr/local/go/bin
+# export PATH=$PATH:/usr/local/go/bin
 
 # QT & GTK
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -19,16 +19,16 @@ export DISTRIB_ID=arch
 export DISTRIB_RELEASE=$(uname -r)
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
-export R_PROFILE_USER=$HOME/.config/R/Rprofile
+# export R_PROFILE_USER=$HOME/.config/R/Rprofile
 export ZDOTDIR=$HOME/.config/zsh
-export TEXMFHOME=$XDG_DATA_HOME/texmf
+# export TEXMFHOME=$XDG_DATA_HOME/texmf
 
 # Applications
 export EDITOR=$(which nvim)
 export READER=$(which zathura)
 export TERMINAL=$(which alacritty)
 export TERM=$(which alacritty)
-export BROWSER=$(which firefox-developer-edition)
+export BROWSER=$(which firefox)
 
 # less/man colors
 export LESS=-R
@@ -45,6 +45,10 @@ export LESS_TERMCAP_ue=$'\e[0m'         # end underline
 # aliasgen
 
 # Start Desktop Environment if on the main TTY
-if [ -z $DISPLAY ] && ([ $(tty) = /dev/tty1 ] || [ $(tty) = /dev/tty2 ]); then
+# if $(cat /etc/hostname) = "disaster"; then
+	# startx
+# else
+	# if [ -z $DISPLAY ] && ([ $(tty) = /dev/tty1 ] || [ $(tty) = /dev/tty2 ]); then
+		# startx
+# fi
 startx
-fi

@@ -15,7 +15,7 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # Misc
-# export HOST=$(cat /etc/hostname)
+export HOST=$(hostname)
 export DISTRIB_ID=arch
 export DISTRIB_RELEASE=$(uname -r)
 export XDG_CONFIG_HOME=$HOME/.config
@@ -46,10 +46,6 @@ export LESS_TERMCAP_ue=$'\e[0m'         # end underline
 # aliasgen
 
 # Start Desktop Environment if on the main TTY
-# if $(cat /etc/hostname) = "disaster"; then
-	# startx
-# else
-	# if [ -z $DISPLAY ] && ([ $(tty) = /dev/tty1 ] || [ $(tty) = /dev/tty2 ]); then
-		# startx
-# fi
-startx
+if [ -z $DISPLAY ] && ([ $(tty) = /dev/tty1 ] || [ $(tty) = /dev/tty2 ]); then
+	startx
+fi

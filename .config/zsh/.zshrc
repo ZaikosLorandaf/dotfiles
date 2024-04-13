@@ -108,6 +108,7 @@ alias e=$(which nvim)
 alias i=$(which vimiv)
 alias z="setsid $(which zathura)"
 alias xx="chmod +x"
+alias cl=changelayout
 # alias cw=chwall
 alias pm=pulsemixer
 

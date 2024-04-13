@@ -1,0 +1,20 @@
+#!/bin/sh
+
+layout=$(cat "$HOME/.cache/layout")
+
+case "$layout" in
+ca)
+	setxkbmap -layout us ,,
+	echo us >"$HOME/.cache/layout"
+	;;
+us)
+	setxkbmap -layout ca ,,
+	echo ca >"$HOME/.cache/layout"
+	;;
+*)
+	setxkbmap -layout us ,,
+	echo us >"$HOME/.cache/layout"
+	;;
+esac
+
+# kill -38 "$(pidof dwmblocks)"

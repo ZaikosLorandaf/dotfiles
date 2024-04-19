@@ -2,7 +2,7 @@ $HOME/.screenlayout/defaultscr.sh &
 makewall &
 picom &
 remaps &
-# polybar &
+dunst &
 
 if [[ $(tty) = /dev/tty1 ]]; then
 while true; do

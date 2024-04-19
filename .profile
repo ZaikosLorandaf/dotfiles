@@ -1,13 +1,13 @@
 # Path
 export SCRIPTS=$HOME/.local/bin
 export PATH=$PATH$( find $SCRIPTS/ -type d -printf ":%p" )
-# export GOPATH=$HOME/.go
-# export PATH=$PATH:$GOPATH/bin
-# export PATH=$PATH:$HOME/.cargo/bin
 export PATH=$PATH:/root/.local/bin
 export PATH=$PATH:$HOME/.local/bin
+# export PATH=$PATH:$GOPATH/bin
+# export PATH=$PATH:$HOME/.cargo/bin
 # export PATH=$PATH:/usr/local/go/bin
 # export PATH=$PATH:/usr/local/go/bin
+# export GOPATH=$HOME/.go
 
 # QT & GTK
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -20,8 +20,8 @@ export DISTRIB_ID=arch
 export DISTRIB_RELEASE=$(uname -r)
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
-# export R_PROFILE_USER=$HOME/.config/R/Rprofile
 export ZDOTDIR=$HOME/.config/zsh
+# export R_PROFILE_USER=$HOME/.config/R/Rprofile
 # export TEXMFHOME=$XDG_DATA_HOME/texmf
 
 # Applications

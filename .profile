@@ -1,5 +1,6 @@
 # Path
 export SCRIPTS=$HOME/.local/bin
+# export GOPATH=$HOME/.go
 export PATH=$PATH$( find $SCRIPTS/ -type d -printf ":%p" )
 export PATH=$PATH:/root/.local/bin
 export PATH=$PATH:$HOME/.local/bin
@@ -7,7 +8,6 @@ export PATH=$PATH:$HOME/.local/bin
 # export PATH=$PATH:$HOME/.cargo/bin
 # export PATH=$PATH:/usr/local/go/bin
 # export PATH=$PATH:/usr/local/go/bin
-# export GOPATH=$HOME/.go
 
 # QT & GTK
 export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -15,7 +15,7 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # Misc
-export HOST=$(hostname)
+export HOST=$(uname -n)
 export DISTRIB_ID=arch
 export DISTRIB_RELEASE=$(uname -r)
 export XDG_CONFIG_HOME=$HOME/.config
@@ -46,6 +46,6 @@ export LESS_TERMCAP_ue=$'\e[0m'         # end underline
 # aliasgen
 
 # Start Desktop Environment if on the main TTY
-if [ -z $DISPLAY ] && ([ $(tty) = /dev/tty1 ] || [ $(tty) = /dev/tty2 ]); then
+if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ]; then
 	startx
 fi

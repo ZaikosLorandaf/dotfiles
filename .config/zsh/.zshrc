@@ -106,7 +106,7 @@ cw() {
 alias f='lfcd'
 alias e=$(which nvim)
 alias i=$(which vimiv)
-alias z="setsid $(which zathura)"
+alias z="setsid $(which zathura) $1 && exit"
 alias xx="chmod +x"
 alias cl=changelayout
 # alias cw=chwall

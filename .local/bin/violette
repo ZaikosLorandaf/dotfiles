@@ -1,0 +1,20 @@
+#!/bin/sh
+
+mapping=$(cat "$HOME/.cache/mapping")
+
+case "$mapping" in
+us)
+	setxkbmap -layout fr ,,
+	echo fr >"$HOME/.cache/mapping"
+	;;
+fr)
+	setxkbmap -layout us ,,
+	echo us >"$HOME/.cache/mapping"
+	;;
+*)
+	setxkbmap -layout us ,,
+	echo us >"$HOME/.cache/mapping"
+	;;
+esac
+
+# kill -38 "$(pidof dwmblocks)"

@@ -90,7 +90,7 @@ function mkcd() {
 }
 
 # Makinf lf  "q" leave you in the working directory
-lfcd () {
+lf () {
     tmp="$(mktemp -uq)"
     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
     lfub -last-dir-path="$tmp" "$@"
@@ -106,10 +106,9 @@ cw() {
 }
 
 #Aliases
-alias f='lfcd'
+# alias f='lf'
 alias e=$(which nvim)
 alias i=$(which vimiv)
-alias z="setsid $(which zathura) $1 && exit"
 alias xx="chmod +x"
 alias cl="changelayout && remaps"
 # alias cw=chwall
@@ -117,6 +116,13 @@ alias pm=pulsemixer
 
 # Git Root
 alias gr='cd $(git rev-parse --show-cdup)'
+
+
+#functions
+z(){
+	$(which zathura) $1&
+	disown && exit
+}
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

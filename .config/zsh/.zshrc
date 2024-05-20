@@ -121,3 +121,6 @@ alias gr='cd $(git rev-parse --show-cdup)'
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
+# VIOLETTE
+echo t\'es belle \<3
+echo -v

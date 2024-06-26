@@ -27,6 +27,11 @@ bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 
+# VIOLETTE BEGIN
+# history search
+bindkey '^R' history-incremental-search-backward
+# VIOLETTE END
+
 export KEYTIMEOUT=1
 
 # Change cursor shape for different vi modes.
@@ -90,6 +95,7 @@ function mkcd() {
 }
 
 # Makinf lf  "q" leave you in the working directory
+<<<<<<< HEAD
 # lf () {
 #     tmp="$(mktemp -uq)"
 #     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
@@ -99,6 +105,17 @@ function mkcd() {
 #         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
 #     fi
 # }
+=======
+lfcd () {
+    tmp="$(mktemp -uq)"
+    trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
+    lfub -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+    fi
+}
+>>>>>>> 2fdd3acef93fe3af1fce3ee43acb2ea2f0152234
 
 cw() {
     setwall $1 $2 &&
@@ -106,7 +123,7 @@ cw() {
 }
 
 #Aliases
-# alias f='lf'
+alias f='lfcd'
 alias e=$(which nvim)
 alias i=$(which vimiv)
 alias xx="chmod +x"
@@ -128,5 +145,19 @@ z(){
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 # VIOLETTE
-echo t\'es belle \<3
-echo -v
+# load mapfile command
+zmodload zsh/mapfile
+# load array of sentences
+file=$XDG_CONFIG_HOME/zsh/init_list
+arr=("${(f@)mapfile[$file]}")
+size=$(($#arr[@] - 1)) # last empty, dont count
+
+# choose random sentence
+idx=$((($RANDOM % $size) + 1)) # 1 index
+sentence=$arr[$idx]
+
+echo ${sentence}
+
+# clean
+unset file arr size idx sentencce
+# VIOLETTE END

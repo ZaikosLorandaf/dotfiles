@@ -95,7 +95,6 @@ function mkcd() {
 }
 
 # Makinf lf  "q" leave you in the working directory
-<<<<<<< HEAD
 # lf () {
 #     tmp="$(mktemp -uq)"
 #     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
@@ -105,17 +104,16 @@ function mkcd() {
 #         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
 #     fi
 # }
-=======
-lfcd () {
-    tmp="$(mktemp -uq)"
-    trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
-    lfub -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
->>>>>>> 2fdd3acef93fe3af1fce3ee43acb2ea2f0152234
+#
+# lfcd () {
+#     tmp="$(mktemp -uq)"
+#     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
+#     lfub -last-dir-path="$tmp" "$@"
+#     if [ -f "$tmp" ]; then
+#         dir="$(cat "$tmp")"
+#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+#     fi
+# }
 
 cw() {
     setwall $1 $2 &&

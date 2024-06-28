@@ -113,7 +113,6 @@ cw() {
 #Aliases
 alias f='lfcd'
 alias e=$(which nvim)
-alias i=$(which vimiv)
 alias xx="chmod +x"
 alias cl="changelayout && remaps"
 # alias cw=chwall
@@ -128,6 +127,10 @@ z(){
 	$(which zathura) $1&
 	disown && exit
 }
+
+i(){
+	$(which vimiv) $1&
+	disown && exit
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

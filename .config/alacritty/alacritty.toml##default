@@ -1,4 +1,3 @@
-save_to_clipboard = true
 
 [bell]
 animation = "EaseOutExpo"
@@ -29,17 +28,17 @@ yellow = "0x9b9257"
 background = "0x111a1f"
 foreground = "0xacb3b5"
 
-[cursor]
-blinking = "Off"
-shape = "Block"
+# [cursor]
+# blinking = "Off"
+# shape = "Block"
 
 [env]
 TERM = "alacritty"
 
 [font]
 builtin_box_drawing = true
-draw_bold_text_with_bright_colors = false
-size = 11
+# draw_bold_text_with_bright_colors = false
+size = 8
 
 [font.bold]
 family = "monospace"
@@ -102,18 +101,18 @@ mods = "Alt|Shift"
 [mouse]
 hide_when_typing = true
 
-[mouse.double_click]
-threshold = 300
+# [mouse.double_click]
+# threshold = 300
 
-[mouse.triple_click]
-threshold = 300
+# [mouse.triple_click]
+# threshold = 300
 
 [scrolling]
 history = 10000
 
 [window]
 dynamic_title = true
-opacity = 0.74
+opacity = 0.85
 title = "Terminal"
 
 [window.class]

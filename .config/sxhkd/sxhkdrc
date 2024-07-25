@@ -21,7 +21,7 @@
 # `#-#` at the beggining of a line will be converted to
 # a header in the manual.
 
-#-# dwm #-# 
+#-# dwm #-#
 ## Quit dwm
 super + shift + q
 	dwmc quit
@@ -40,8 +40,8 @@ super + shift + space
 	dwmc togglefloating
 ## Cycle the window stack
 super + {j,k}
-	dwmc rotattestack {+,-}1
+	dwmc focusstack {+,-}1
 ## Rotate the window stack
 super + shift + {j,k}
-	dwmc movestack {+.-}1
-## 
+	dwmc rotatestack {+.-}1
+##

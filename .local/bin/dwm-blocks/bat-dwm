@@ -1,0 +1,5 @@
+#!/bin/sh
+battery=$(acpi | grep -o "[0-9]*%")
+icon='󰁹'
+printf " %s %s " "$icon" "$battery"
+

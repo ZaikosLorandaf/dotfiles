@@ -4,6 +4,7 @@ picom &
 xrdb -load ~/.Xresources &
 remaps &
 dunst &
+dwmblocks &
 xset r rate 300 50 &
 
 if [[ $(tty) = /dev/tty1 ]]; then

@@ -1,0 +1,6 @@
+#!/bin/sh
+ini_bright=$(cat /sys/class/backlight/amdgpu_bl1/brightness)
+sun='󰃞'
+bright=$ini_bright * 100 / 255
+printf " %s %s%% " "$sun" "$bright"
+

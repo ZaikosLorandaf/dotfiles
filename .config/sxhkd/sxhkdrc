@@ -21,27 +21,38 @@
 # `#-#` at the beggining of a line will be converted to
 # a header in the manual.
 
-#-# dwm #-#
-## Quit dwm
-super + shift + q
-	dwmc quit
-## Quit focused app
-super + q
-	quitapp
-## Toggle dwm bar
+# #-# dwm #-#
+# ## Quit dwm
+# super + shift + q
+# 	dwmc quit
+# ## Quit focused app
+# super + q
+# 	quitapp
+# ## Toggle dwm bar
+#
+# ## Change layout to {tiling, monocle
+#
+# ## Make the current window fullscreen
+# super + f
+# 	dwmc fullscreen
+# ## Make the current window floating (toggle)
+# super + shift + space
+# 	dwmc togglefloating
+# ## Cycle the window stack
+# super + {j,k}
+# 	dwmc focusstack {+,-}1
+# ## Rotate the window stack
+# super + shift + {j,k}
+# 	dwmc rotatestack {+.-}1
+# ##
 
-## Change layout to {tiling, monocle
 
-## Make the current window fullscreen
-super + f
-	dwmc fullscreen
-## Make the current window floating (toggle)
-super + shift + space
-	dwmc togglefloating
-## Cycle the window stack
-super + {j,k}
-	dwmc focusstack {+,-}1
-## Rotate the window stack
-super + shift + {j,k}
-	dwmc rotatestack {+.-}1
-##
+## Increase/decrease Brightness
+{XF86MonBrightnessUp, XF86MonBrightnessDown}
+    backlightctl -{i,d} 5 && kill -36 $(pidof dwmblocks)
+## Max-Out Brightness
+shift + XF86MonBrightnessUp
+    backlightctl -s 100, kill -36 $(pidof dwmblocks)
+## Set Brightness to 5 percent
+shift + XF86MonBrightnessDown && kill -36 $(pidof dwmblocks)
+

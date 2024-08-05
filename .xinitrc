@@ -3,6 +3,7 @@ makewall &
 picom &
 xrdb -load ~/.Xresources &
 remaps &
+sxhkd &
 dunst &
 dwmblocks &
 xset r rate 300 50 &

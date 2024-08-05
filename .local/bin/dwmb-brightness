@@ -1,0 +1,5 @@
+#!/bin/sh
+bright=$(cat /sys/class/backlight/amdgpu_b11/brightness)
+icon="󰃠"
+
+printf " %s %s " "$icon" "$bright"

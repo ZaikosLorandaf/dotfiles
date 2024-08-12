@@ -112,7 +112,7 @@ history = 10000
 
 [window]
 dynamic_title = true
-opacity = 0.85
+opacity = 0.75
 title = "Terminal"
 
 [window.class]

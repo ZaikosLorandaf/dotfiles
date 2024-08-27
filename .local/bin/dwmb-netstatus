@@ -1,0 +1,31 @@
+#!/bin/sh
+
+icon=""
+
+WiFi=(󰤨 󰤥 󰤢 󰤟 󰤯 󰤭 )
+level="$(cat /proc/net/wireless | awk '{print $3}' | grep -o '.[0-9]' | sed 's/*\.//')"
+values=("70" "56" "42" "28" "14" "0")
+
+[ "$level" -le "$(echo ${values[0]})" ] && \
+  [ "$level" -gt "$(echo ${values[1]})" ] && \
+  icon=$(echo ${WiFi[0]})
+
+[ "$level" -le "$(echo ${values[1]})" ] && \
+  [ "$level" -gt "$(echo ${values[2]})" ] && \
+  icon=$(echo ${WiFi[1]})
+
+[ "$level" -le "$(echo ${values[2]})" ] && \
+  [ "$level" -gt "$(echo ${values[3]})" ] && \
+   icon=$(echo ${WiFi[2]})
+
+[ "$level" -le "$(echo ${values[3]})" ] && \
+  ["$level" -gt "$(echo ${values[4]})" ] && \
+  icon=$(echo ${WiFi[3]})
+
+[ "$level" -le "$(echo ${values[4]})" ] && \
+  [ "$level" -gt "$(echo ${values[5]})" ] && \
+  icon=$(echo ${WiFi[4]})
+
+[ -z "$icon" ] && icon=$(echo ${WiFi[5]})
+
+printf " %s " "$icon"

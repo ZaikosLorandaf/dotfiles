@@ -21,6 +21,8 @@ export DISTRIB_RELEASE=$(uname -r)
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export ZDOTDIR=$HOME/.config/zsh
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit
 # export R_PROFILE_USER=$HOME/.config/R/Rprofile
 # export TEXMFHOME=$XDG_DATA_HOME/texmf
 

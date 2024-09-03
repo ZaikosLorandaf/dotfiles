@@ -1,16 +1,14 @@
 $HOME/.screenlayout/defaultscr.sh &
 makewall &
 picom &
-xrdb -load ~/.Xresources &
 remaps &
 sxhkd &
 dunst &
 dwmblocks &
 xset r rate 300 50 &
+# xrdb -load ~/.Xresources &
+protonmail-bridge-core -n &
 
-if [[ $(tty) = /dev/tty1 ]]; then
 while true; do
   dwm >/dev/null
 done
-fi
-

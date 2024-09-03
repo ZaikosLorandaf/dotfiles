@@ -1,9 +1,9 @@
 # Path
 export SCRIPTS=$HOME/.local/bin
-# export GOPATH=$HOME/.go
 export PATH=$PATH$( find $SCRIPTS/ -type d -printf ":%p" )
 export PATH=$PATH:/root/.local/bin
 export PATH=$PATH:$HOME/.local/bin
+# export GOPATH=$HOME/.go
 # export PATH=$PATH:$GOPATH/bin
 # export PATH=$PATH:$HOME/.cargo/bin
 # export PATH=$PATH:/usr/local/go/bin

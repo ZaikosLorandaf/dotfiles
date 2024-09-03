@@ -84,8 +84,8 @@ setopt prompt_subst
 PROMPT=" %B%F{blue} %b%F{yellow}"
 # PROMPT=" %B%F{blue}𝜑 %b%F{yellow}"
 # PROMPT=" %B%F{blue}π %b%F{yellow}"
-RPROMPT="\$vcs_info_msg_1_ %B%F{magenta}(%B%F{cyan}%1/%B%F{magenta})"
-# PROMPT="\$vcs_info_msg_0_ %B%F{magenta}(%B%F{cyan}%1/%B%F{magenta})"
+# RPROMPT="\$vcs_info_msg_1_ %B%F{magenta}(%B%F{cyan}%1/%B%F{magenta})"
+RPROMPT="\$vcs_info_msg_0_ %B%F{magenta}(%B%F{cyan}%1/%B%F{magenta})"
 
 zstyle ':vcs_info:git:*' formats '%b'
 
@@ -164,3 +164,5 @@ echo ${sentence}
 # clean
 unset file arr size idx sentencce
 # VIOLETTE END
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -95,37 +95,16 @@ function mkcd() {
     cd -P -- "$1"
 }
 
-# Makinf lf  "q" leave you in the working directory
-# lf () {
-#     tmp="$(mktemp -uq)"
-#     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
-#     lf -single -last-dir-path="$tmp" "$@"
-#     if [ -f "$tmp" ]; then
-#         dir="$(cat "$tmp")"
-#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-#     fi
-# }
-#
-# lfcd () {
-#     tmp="$(mktemp -uq)"
-#     trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM PWR EXIT' HUP INT QUIT TERM PWR EXIT
-#     lfub -last-dir-path="$tmp" "$@"
-#     if [ -f "$tmp" ]; then
-#         dir="$(cat "$tmp")"
-#         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-#     fi
-# }
-
 cw() {
     setwall $1 $2 &&
     makewall
 }
 
 #Aliases
-alias f='lfcd'
 alias e=$(which nvim)
 alias xx="chmod +x"
 alias cl="changelayout && remaps"
+alias z="zathura --fork"
 # alias cw=chwall
 alias pm=pulsemixer
 
@@ -134,15 +113,27 @@ alias gr='cd $(git rev-parse --show-cdup)'
 
 
 #functions
-z(){
-	$(which zathura) $1&
-	disown && exit
-}
+# z(){
+# 	$(which zathura) $1&
+# 	disown && exit
+# }
 
 i(){
 	$(which vimiv) $1&
 	disown && exit
 }
+
+f() {
+	tmp="$(mktemp -uq)"
+	trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM EXIT' HUP INT QUIT TERM EXIT
+	lf -single -last-dir-path="$tmp" "$@"
+	if [ -f "$tmp" ]
+	then
+		dir="$(cat "$tmp")"
+		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+	fi
+}
+
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

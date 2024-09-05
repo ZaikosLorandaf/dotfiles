@@ -56,3 +56,7 @@ shift + XF86MonBrightnessUp
 ## Set Brightness to 5 percent
 shift + XF86MonBrightnessDown && kill -36 $(pidof dwmblocks)
 
+
+## Slock
+super + Delete
+  slock

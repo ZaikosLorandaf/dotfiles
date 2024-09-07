@@ -1,12 +1,11 @@
-#!/bin/sh
+#!/bin/dash
 status=$(acpi | grep -o "[Cc]harging")
 battery=$(acpi | grep -o "[0-9]*%")
 icon='󰁹'
 icon2='󱐋'
 
-if [$status -eq "Charging"]; then
+if [ "$status" = 'Charging' ]; then
   icon=$icon2
 fi
 
 printf " %s %s " "$icon" "$battery"
-

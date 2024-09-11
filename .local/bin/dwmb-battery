@@ -1,11 +1,20 @@
 #!/bin/dash
-status=$(acpi | grep -o "[Cc]harging")
-battery=$(acpi | grep -o "[0-9]*%")
-icon='󰁹'
-icon2='󱐋'
 
-if [ "$status" = 'Charging' ]; then
-  icon=$icon2
-fi
+path=/sys/class/power_supply/BAT1
+status=$(cat "$path"/status)
+level=$(cat "$path"/capacity)
+icon=""
 
-printf " %s %s " "$icon" "$battery"
+[ $status = 'Charging' ] && icon="󱐋"
+
+[ -z "$icon" ] &&
+  case $level in
+    [0-9]|1[0-9])   icon='';;
+    [2-3][0-9])     icon='';;
+    [4-5][0-9])     icon='';;
+    [6-7][0-9])     icon='';;
+    [8-9][0-9]|100) icon='';;
+    *)              icon='󱚠';;
+esac
+
+printf "%s %s%% " "$icon" "$level"

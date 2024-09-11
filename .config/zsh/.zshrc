@@ -104,7 +104,6 @@ cw() {
 alias e=$(which nvim)
 alias xx="chmod +x"
 alias cl="changelayout && remaps"
-alias z="zathura --fork"
 # alias cw=chwall
 alias pm=pulsemixer
 
@@ -112,11 +111,12 @@ alias pm=pulsemixer
 alias gr='cd $(git rev-parse --show-cdup)'
 
 
-#functions
-# z(){
-# 	$(which zathura) $1&
-# 	disown && exit
-# }
+#Functions
+
+z(){
+	$(which zathura) $1&
+	disown && exit
+}
 
 i(){
 	$(which vimiv) $1&

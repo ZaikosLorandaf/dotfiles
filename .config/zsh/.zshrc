@@ -106,6 +106,7 @@ alias xx="chmod +x"
 alias cl="changelayout && remaps"
 # alias cw=chwall
 alias pm=pulsemixer
+alias adno=arduino-cli
 
 # Git Root
 alias gr='cd $(git rev-parse --show-cdup)'

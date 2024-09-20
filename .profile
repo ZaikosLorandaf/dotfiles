@@ -1,12 +1,12 @@
 # Path
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_DATA_HOME=$HOME/.local/share
-export SCRIPTS=$HOME/.local/bin
-export PATH=$PATH$( find $SCRIPTS/ -type d -printf ":%p" )
-export PATH=$PATH:/root/.local/bin
-export PATH=$PATH:$HOME/.local/bin
-export GOPATH=$XDG_DATA_HOME/.go
-export PATH=$PATH:$GOPATH/bin
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export SCRIPTS="$HOME/.local/bin"
+export PATH="$PATH$( find $SCRIPTS/ -type d -printf ":%p" )"
+export PATH="$PATH:/root/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export GOPATH="$XDG_DATA_HOME/.go"
+export PATH="$PATH:$GOPATH/bin"
 # export PATH=$PATH:$HOME/.cargo/bin
 # export PATH=$PATH:/usr/local/go/bin
 # export PATH=$PATH:/usr/local/go/bin
@@ -17,21 +17,21 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # Misc
-export HOST=$(uname -n)
-export DISTRIB_ID=arch
-export DISTRIB_RELEASE=$(uname -r)
-export ZDOTDIR=$HOME/.config/zsh
-export _JAVA_AWT_WM_NONREPARENTING=1
-export AWT_TOOLKIT=MToolkit
-# export R_PROFILE_USER=$HOME/.config/R/Rprofile
-# export TEXMFHOME=$XDG_DATA_HOME/texmf
+export HOST="$(uname -n)"
+export DISTRIB_ID="arch"
+export DISTRIB_RELEASE="$(uname -r)"
+export ZDOTDIR="$HOME/.config/zsh"
+export _JAVA_AWT_WM_NONREPARENTING="1"
+export AWT_TOOLKIT="MToolkit"
+# export R_PROFILE_USER="$HOME/.config/R/Rprofile"
+# export TEXMFHOME="$XDG_DATA_HOME/texmf"
 
 # Applications
-export EDITOR=$(which nvim)
-export READER=$(which zathura)
-export TERMINAL=$(which alacritty)
-export TERM=$(which alacritty)
-export BROWSER=$(which firefox)
+export EDITOR="$(which nvim)"
+export READER="$(which zathura)"
+export TERMINAL="$(which alacritty)"
+export TERM="$(which alacritty)"
+export BROWSER="$(which firefox)"
 
 # less/man colors
 export LESS=-R

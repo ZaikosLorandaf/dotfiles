@@ -107,6 +107,7 @@ alias cl="changelayout && remaps"
 # alias cw=chwall
 alias pm=pulsemixer
 alias adno=arduino-cli
+alias adog="git log --all --decorate --oneline --graph"
 
 # Git Root
 alias gr='cd $(git rev-parse --show-cdup)'

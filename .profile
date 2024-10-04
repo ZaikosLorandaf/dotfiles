@@ -15,6 +15,7 @@ export PATH="$PATH:$GOPATH/bin"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export QT_QPA_PLATFORMTHEME="qt5ct"
+export GTK_THEME="Adwaita:dark"
 
 # Misc
 export HOST="$(uname -n)"

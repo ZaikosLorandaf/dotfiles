@@ -1,3 +1,10 @@
+# Applications
+export EDITOR="$(which nvim)"
+export READER="$(which zathura)"
+export TERMINAL="$(which wezterm)"
+export TERM="$(which wezterm)"
+export BROWSER="$(which firefox)"
+
 # Path
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -27,13 +34,6 @@ export AWT_TOOLKIT="MToolkit"
 # export R_PROFILE_USER="$HOME/.config/R/Rprofile"
 # export TEXMFHOME="$XDG_DATA_HOME/texmf"
 
-# Applications
-export EDITOR="$(which nvim)"
-export READER="$(which zathura)"
-export TERMINAL="$(which alacritty)"
-export TERM="$(which alacritty)"
-export BROWSER="$(which firefox)"
-
 # less/man colors
 export LESS=-R
 export LESS_TERMCAP_md=$'\e[01;36;74m'  # begin bold
@@ -45,8 +45,8 @@ export LESS_TERMCAP_me=$'\e[0m'         # end mode
 export LESS_TERMCAP_ue=$'\e[0m'         # end underline
 
 # Generate shortcuts and aliases
-# shortcutgen
-# aliasgen
+shortcutgen
+aliasgen
 
 # Start Desktop Environment if on the main TTY
 if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ]; then

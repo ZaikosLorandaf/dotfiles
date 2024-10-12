@@ -1,0 +1,37 @@
+#        _ _
+#       | (_)
+#   __ _| |_  __ _ ___ _ __ ___
+#  / _` | | |/ _` / __| '__/ __|
+# | (_| | | | (_| \__ \ | | (__
+#  \__,_|_|_|\__,_|___/_|  \___|
+#
+#
+# #---universal shell alias configuration file---# #
+# since the creation of the aliasgen script, alias have been migrated to
+# functions. this facilitates the following:
+# - escaping quotes
+# - only evaluating variables (ex: $groot) at runtime
+# for this to work, "$@" is appended to the end of every function here.
+# take this into consideration when creating new ones.
+
+:e,      $EDITOR
+:q,      exit
+adno,    arduino-cli
+cdd,     cd ..
+cl,      changelayout && remaps
+cw,      chwall
+e,       $EDITOR
+w,       $BROWSER
+g,       git
+ff,      fastfetch --raw $home/.cache/gentoo.six --logo-width 32 --logo-height 24 --logo-padding 2
+gr,      groot=$(git rev-parse --show-toplevel 2>/dev/null); [ -z "$groot" ] || cd "$groot" || return
+mmi,     make clean install
+mkcd,    mkdir -p -- "$1" && cd -p --
+pm,      pulsemixer
+tmcd,    tmux attach-session -t
+tmdd,    tmux  kill-session -t
+tmls,    tmux list-sessions
+xx,      chmod +x
+adog,    git log --all --decorate --oneline --graph
+yadog,   yadm log --all --decorate --oneline --graph
+z,       zathura --fork

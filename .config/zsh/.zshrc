@@ -100,19 +100,6 @@ cw() {
     makewall
 }
 
-#Aliases
-alias e=$(which nvim)
-alias xx="chmod +x"
-alias cl="changelayout && remaps"
-# alias cw=chwall
-alias pm=pulsemixer
-alias adno=arduino-cli
-alias adog="git log --all --decorate --oneline --graph"
-
-# Git Root
-alias gr='cd $(git rev-parse --show-cdup)'
-
-
 #Functions
 
 z(){
@@ -158,4 +145,11 @@ echo ${sentence}
 unset file arr size idx sentencce
 # VIOLETTE END
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Commonly used shortcuts
+[ -f "${XDG_CACHE_HOME:-$HOME/.cache}/zsh-aliases" ] && source "${XDG_CACHE_HOME:-$HOME/.cache}/zsh-aliases"
+[ -f "${XDG_CACHE_HOME:-$HOME/.cache}/zsh-shortcuts" ] && source "${XDG_CACHE_HOME:-$HOME/.cache}/zsh-shortcuts"
+
+# Load zsh-syntax-highlighting; should be last.
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+

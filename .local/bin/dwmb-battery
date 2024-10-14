@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 
 path=/sys/class/power_supply/BAT1
 status=$(cat "$path"/status)

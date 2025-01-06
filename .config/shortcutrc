@@ -32,7 +32,7 @@ Downloads,     dl,  ~/Downloads
 Hotkeys,       sx,  ~/.config/sxhkd
 Neovim,        vi,  ~/.config/nvim
 Scripts,       sc,  ~/.local/bin
-University,    ui,  ~/University/2024_S1/
+University,    ui,  ~/University/2025_S2/
 WindowManager, wm,  ~/.local/src/dwm
 Workspace,     ws,  ~/Workspace
 

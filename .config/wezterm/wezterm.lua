@@ -39,5 +39,6 @@ config.colors = {
 }
 
 config.window_background_opacity = 0.7
+config.enable_wayland = true
 
 return config

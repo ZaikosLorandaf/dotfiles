@@ -51,4 +51,6 @@ aliasgen
 # Start Desktop Environment if on the main TTY
 if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ]; then
 	startx
+elif [ -z $DISPLAY ] && [ $(tty) = /dev/tty2 ]; then
+  river -no-xwayland
 fi

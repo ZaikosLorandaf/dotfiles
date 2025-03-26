@@ -52,10 +52,19 @@
     backlightctl -{i,d} 5 && kill -36 $(pidof dwmblocks)
 ## Max-Out Brightness
 shift + XF86MonBrightnessUp
-    backlightctl -s 100, kill -36 $(pidof dwmblocks)
+    backlightctl -s 100 && kill -36 $(pidof dwmblocks)
 ## Set Brightness to 5 percent
-shift + XF86MonBrightnessDown && kill -36 $(pidof dwmblocks)
+shift + XF86MonBrightnessDown
+    backlightctl -s 5 && kill -36 $(pidof dwmblocks)
 
+
+## Toggle Mute
+XF86AudioMute
+    pulsemixer --toggle-mute
+
+## Volume up/down 5%
+# {XF86AudioRaiseVolume, XF86AudioLowerVolume}
+#     pulsemixer
 
 ## Slock
 super + Delete

@@ -4,6 +4,6 @@ map gdl cd ~/Downloads
 map gsx cd ~/.config/sxhkd
 map gvi cd ~/.config/nvim
 map gsc cd ~/.local/bin
-map gui cd ~/University/2025_S2/
+map gui cd ~/University/2025_S3/
 map gwm cd ~/.local/src/dwm
 map gws cd ~/Workspace

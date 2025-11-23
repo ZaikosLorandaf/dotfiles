@@ -55,7 +55,7 @@ shift + XF86MonBrightnessUp
     backlightctl -s 100 && kill -36 $(pidof dwmblocks)
 ## Set Brightness to 5 percent
 shift + XF86MonBrightnessDown
-    backlightctl -s 5 && kill -36 $(pidof dwmblocks)
+    backlightctl -s 0 && kill -36 $(pidof dwmblocks)
 
 
 ## Toggle Mute

@@ -85,7 +85,7 @@ PROMPT=" %B%F{blue} %b%F{yellow}"
 # PROMPT=" %B%F{blue}𝜑 %b%F{yellow}"
 # PROMPT=" %B%F{blue}π %b%F{yellow}"
 # RPROMPT="\$vcs_info_msg_1_ %B%F{magenta}(%B%F{cyan}%1/%B%F{magenta})"
-RPROMPT="\$vcs_info_msg_0_ %B%F{magenta}(%B%F{cyan}%1/%B%F{magenta})"
+RPROMPT="%b%F{111}\$vcs_info_msg_0_ %B%F{magenta}(%B%F{cyan}%1/%B%F{magenta})"
 
 zstyle ':vcs_info:git:*' formats '%b'
 
@@ -101,7 +101,6 @@ cw() {
 }
 
 #Functions
-
 z(){
 	$(which zathura) $1&
 	disown && exit
@@ -151,5 +150,4 @@ unset file arr size idx sentencce
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-
+# source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

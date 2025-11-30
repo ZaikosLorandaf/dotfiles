@@ -50,8 +50,8 @@ aliasgen
 
 # Start Desktop Environment if on the main TTY
 if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ]; then
-	startx
+    mango
 elif [ -z $DISPLAY ] && [ $(tty) = /dev/tty2 ]; then
   # river -no-xwayland
-  niri
+	startx
 fi

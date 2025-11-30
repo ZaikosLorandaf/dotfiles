@@ -1,0 +1,126 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 2,
+    "modules-left": [
+        "ext/workspaces",
+        "dwl/window#layout"
+    ],
+    "modules-center": [
+        "dwl/window#title"
+    ],
+    "modules-right": [
+        "network",
+        "custom/separator",
+        "custom/language",
+        "custom/separator",
+        "pulseaudio",
+        "backlight",
+        "temperature",
+        "battery",
+        "custom/separator",
+        "clock"
+    ],
+
+    "ext/workspaces": {
+        "format": "{icon}",
+        "ignore-hidden": true,
+        "on-click": "activate",
+        "sort-by-id": true
+    },
+
+    "dwl/window#title": {
+        "format": "{title}",
+        "max-length": 50,
+        "rewrite": {
+            "(.*)Firefox": "Firefox",
+            "(.*)nvim": " $1",
+            "(.*)zsh": " [$1]"
+        }
+    },
+
+    "dwl/window#layout": {
+        "format": "[{layout}]"
+    },
+
+
+
+    // ---------- RIGHT ---------//
+    "tray": {
+        "spacing": 10
+    },
+
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "",
+            "", "", "", "", ""]
+    },
+
+    "battery": {
+        "states": {
+            "good": 100,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-critical": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%y-%m [%a]}</big>"
+    },
+
+    "custom/language": {
+        "format": " {text}",
+        "exec": "waybar-layout",
+        "return-type": "json",
+        "signal": 1,
+        "on-click": "changelayout"
+    },
+
+    "network": {
+        "format-wifi": "{essid} ({signaldBm}dB) ",
+        "format-ethernet": "{ipaddr}/{cidr} 󰌗",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (no ip)",
+        "format-disconnected": "disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": "󰗿 {icon}",
+        "format-muted": "󰝟 {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "headset": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "temperature": {
+        "format": "{temperatureC}°C {icon}",
+        "format-icons": ["", "", ""]
+    },
+
+    "custom/separator": {
+        "format": "|",
+        "interval": 0
+    }
+}

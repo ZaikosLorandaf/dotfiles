@@ -1,0 +1,134 @@
+/* @define-color tag #32174d; */
+/* @define-color tag #083030; */
+@define-color tag #520f2B;
+@define-color tnew #084040;
+@define-color txt #bbc2cf;
+@define-color sep #a81e57;
+@define-color blu #008080;
+@define-color warn #b8860b;
+@define-color crit #ff0000;
+@define-color char #b57edc;
+
+@keyframes blink-animation {
+    from {color: @crit; }
+    to { color: @blu; }
+}
+
+* {
+    font-family: "VulfMono";
+    font-size: 16px;
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.modules-right {
+    padding-right: 5px;
+}
+
+button {
+}
+
+button:hover {
+    background: @tag;
+    border-radius: 0;
+    /* border-width: 0px; */
+    transition: none;
+}
+
+button.active {
+    color: white;
+    background-color: @tag;
+    border-radius: 0px;
+}
+
+#workspaces button:hover {
+    background: @tag;
+}
+
+#workspaces button {
+    /* padding: 5px 10px 5px 10px; */
+    color: @txt;
+}
+
+#workspaces button.active {
+    color: white;
+    background-color: @tag;
+    border-radius: 0px;
+}
+
+#workspaces button.urgent {
+    color: white;
+    background-color: @tnew;
+    border-radius: 0px;
+}
+
+#window {
+    margin-left: -10px;
+}
+
+#tray,
+#pulseaudio,
+#cpu,
+#custom-language,
+#network,
+#backlight,
+#temperature,
+#battery,
+#clock {
+    padding-right: 12px;
+    padding-left: 5px;
+}
+
+#backlight {
+    color: @blu;
+}
+
+#battery.good {
+    color: @blu;
+}
+
+#battery.warning not.charging {
+    color: @warn;
+}
+
+#battery.critical not.charging {
+    animation: blink-animation 0.5s steps(10, start) alternate infinite;
+}
+
+#battery.charging {
+    color: @char;
+}
+
+#clock {
+    color: @blu;
+}
+
+#custom-language {
+    color: @blu;
+}
+
+#network {
+    color: @blu;
+}
+
+#pulseaudio {
+    color: @blu;
+}
+
+#temperature {
+    color: @blu;
+}
+
+#temperature.critical {
+    background: @crit;
+}
+
+#custom-separator {
+    color: @sep;
+}
+
+/* #custom-notification { */
+/*     font-family: "NotoSansMono Nerd Font"; */
+/*   } */

@@ -1,20 +1,40 @@
 #!/bin/sh
 
-layout=$(cat "$HOME/.cache/layout")
+session=$(echo $XDG_SESSION_TYPE)
 
-case "$layout" in
-ca)
-	setxkbmap -layout us ,,
-	echo us >"$HOME/.cache/layout"
-	;;
-us)
-	setxkbmap -layout ca ,,
-	echo ca >"$HOME/.cache/layout"
-	;;
-*)
-	setxkbmap -layout us ,,
-	echo us >"$HOME/.cache/layout"
-	;;
-esac
+if [ "$session" == "wayland" ]; then
+    currentwl=$(echo $(mmsg -k xkb_rules_layout | awk '{print $3}'))
+    case "$currentwl" in
+    ca)
+        echo us >"$HOME/.cache/layout"
+        mmsg -d switch_keyboard_layout
+        ;;
+    us)
+        echo ca >"$HOME/.cache/layout"
+        mmsg -d switch_keyboard_layout
+        ;;
+    *)
+        echo $currentwl >"$HOME/.cache/layout"
+        ;;
+    esac
+    pkill -RTMIN+1 waybar
 
-# kill -38 "$(pidof dwmblocks)"
+# X11 compatibility
+else
+    layout=$(cat "$HOME/.cache/layout")
+    case "$layout" in
+    ca)
+        setxkbmap -layout us ,,
+        echo us >"$HOME/.cache/layout"
+        ;;
+    us)
+        setxkbmap -layout ca ,,
+        echo ca >"$HOME/.cache/layout"
+        ;;
+    *)
+        setxkbmap -layout us ,,
+        echo us >"$HOME/.cache/layout"
+        ;;
+    esac
+    # kill -38 "$(pidof dwmblocks)"
+fi

@@ -4,6 +4,7 @@ local wezterm = require("wezterm")
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
+config.enable_wayland = true
 
 -- config.font = wezterm.font("Vulf Mono")
 config.font = wezterm.font_with_fallback({ "Vulf Mono", "SymbolsNerdFontMono" })
@@ -40,6 +41,5 @@ config.colors = {
 }
 
 config.window_background_opacity = 0.78
-config.enable_wayland = true
 
 return config

@@ -1,7 +1,7 @@
 /* @define-color tag #32174d; */
 /* @define-color tag #083030; */
 @define-color tag #520f2B;
-@define-color tnew #084040;
+@define-color tnew #185050;
 @define-color txt #bbc2cf;
 @define-color sep #a81e57;
 @define-color blu #008080;
@@ -89,12 +89,12 @@ button.active {
     color: @blu;
 }
 
-#battery.warning not.charging {
+#battery.warning:not(.charging) {
     color: @warn;
 }
 
-#battery.critical not.charging {
-    animation: blink-animation 0.5s steps(10, start) alternate infinite;
+#battery.critical:not(.charging) {
+    animation: blink-animation 5s steps(20, start) alternate infinite;
 }
 
 #battery.charging {

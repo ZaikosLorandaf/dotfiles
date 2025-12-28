@@ -17,7 +17,7 @@
         "custom/separator",
         "pulseaudio",
         "backlight",
-        "temperature",
+        // "temperature",
         "battery",
         "custom/separator",
         "clock"
@@ -61,7 +61,7 @@
         "states": {
             "good": 100,
             "warning": 30,
-            "critical": 15
+            "critical": 10
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",

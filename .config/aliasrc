@@ -27,7 +27,7 @@ ff,      fastfetch --raw $home/.cache/gentoo.six --logo-width 32 --logo-height 2
 gpp,     g++
 gr,      groot=$(git rev-parse --show-toplevel 2>/dev/null); [ -z "$groot" ] || cd "$groot" || return
 mmi,     make clean install
-mkcd,    mkdir -p -- "$1" && cd -p --
+mkcd,    mkdir -p -- "$1" && cd -p -- $1
 pm,      pulsemixer
 tmcd,    tmux attach-session -t
 tmdd,    tmux  kill-session -t

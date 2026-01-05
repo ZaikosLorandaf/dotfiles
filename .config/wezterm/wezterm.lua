@@ -12,6 +12,17 @@ config.font_size = 16
 
 config.enable_tab_bar = false
 
+config.keys = {
+  -- Turn off the default CMD-m Hide action, allowing CMD-m to
+  -- be potentially recognized and handled by the tab
+  {
+    key = 'n',
+    mods = 'SHIFT|CTRL',
+    action = wezterm.action.DisableDefaultAssignment,
+  },
+}
+
+
 config.colors = {
 
 	-- background = "#111a1f",

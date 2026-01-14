@@ -78,7 +78,7 @@
     },
 
     "clock": {
-        "tooltip-format": "<big>{:%y-%m [%a]}</big>"
+        "tooltip-format": "<big>{:%y-%m-%d [%a]}</big>"
     },
 
     "custom/language": {

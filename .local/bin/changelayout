@@ -3,7 +3,7 @@
 session=$(echo $XDG_SESSION_TYPE)
 
 if [ "$session" == "wayland" ]; then
-    currentwl=$(echo $(mmsg -k xkb_rules_layout | awk '{print $3}'))
+    currentwl=$(echo $(mmsg -k xkb_rules_layout | head -n 1 | awk '{print $3}' ))
     case "$currentwl" in
     ca)
         echo us >"$HOME/.cache/layout"

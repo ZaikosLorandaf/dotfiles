@@ -85,7 +85,7 @@ PROMPT=" %B%F{blue} %b%F{yellow}"
 # PROMPT=" %B%F{blue}𝜑 %b%F{yellow}"
 # PROMPT=" %B%F{blue}π %b%F{yellow}"
 # RPROMPT="\$vcs_info_msg_1_ %B%F{magenta}(%B%F{cyan}%1/%B%F{magenta})"
-RPROMPT="%b%F{111}\$vcs_info_msg_0_ %B%F{magenta}(%B%F{cyan}%1/%B%F{magenta})"
+RPROMPT="%b%F{13}\$vcs_info_msg_0_ %B%F{red}(%B%F{blue}%1/%B%F{red})"
 
 zstyle ':vcs_info:git:*' formats '%b'
 
@@ -111,16 +111,24 @@ i(){
 	disown && exit
 }
 
-f() {
-	tmp="$(mktemp -uq)"
-	trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM EXIT' HUP INT QUIT TERM EXIT
-	lf -single -last-dir-path="$tmp" "$@"
-	if [ -f "$tmp" ]
-	then
-		dir="$(cat "$tmp")"
-		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-	fi
+function f() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
 }
+
+# f() {
+# 	tmp="$(mktemp -uq)"
+# 	trap 'rm -f $tmp >/dev/null 2>&1 && trap - HUP INT QUIT TERM EXIT' HUP INT QUIT TERM EXIT
+# 	lf -single -last-dir-path="$tmp" "$@"
+# 	if [ -f "$tmp" ]
+# 	then
+# 		dir="$(cat "$tmp")"
+# 		[ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+# 	fi
+# }
 
 
 # Load zsh-syntax-highlighting; should be last.

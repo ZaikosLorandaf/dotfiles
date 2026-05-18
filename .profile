@@ -1,8 +1,8 @@
 # Applications
 export EDITOR="$(which nvim)"
 export READER="$(which zathura)"
-export TERMINAL="$(which wezterm)"
-export TERM="$(which wezterm)"
+export TERMINAL="$(which ghostty)"
+export TERM="$(which ghostty)"
 export BROWSER="$(which firefox)"
 
 # Path
@@ -23,6 +23,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export GTK_THEME="Adwaita:dark"
+export GTK_IM_MODULE=simple
 
 # Misc
 export HOST="$(uname -n)"
@@ -33,6 +34,9 @@ export _JAVA_AWT_WM_NONREPARENTING="1"
 export AWT_TOOLKIT="MToolkit"
 # export R_PROFILE_USER="$HOME/.config/R/Rprofile"
 # export TEXMFHOME="$XDG_DATA_HOME/texmf"
+#
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/tools/Xilinx/Vitis/2024.1/tps/lnx64/cmake-3.24.2/libs/Rhel/9
 
 # less/man colors
 export LESS=-R

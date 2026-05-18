@@ -1,0 +1,8 @@
+[flavor]
+dark = "rose-pine"
+
+[icon]
+prepend_dirs = [
+  { name = "Dropbox", text = " " },
+  { name = "Workspace", text = " " },
+]

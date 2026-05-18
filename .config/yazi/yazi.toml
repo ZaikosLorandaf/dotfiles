@@ -1,0 +1,67 @@
+[mgr]
+
+ratio = [1,2,2]
+
+[opener]
+
+image = [
+    { run = 'imv "$@"', orphan = true, desc = "View with imv" },
+]
+video = [
+    { run = 'mpv "$@"', orphan = true, desc = "Play with mpv" },
+]
+text = [
+    { run = '$EDITOR "$@"', block = true, desc = "Edit with $EDITOR" },
+]
+archive = [
+    { run = 'file-roller "$@"', orphan = true, desc = "Extract with file-roller" },
+]
+epub = [
+    { run = 'zathura "$@"', orphan = true, desc = "Open with zathura" },
+]
+fallback = [
+    { run = 'xdg-open "$@"', orphan = true, desc = "Open with default" },
+]
+
+[open]
+
+rules = [
+    # Images
+    { mime = "image/*", use = "image" },
+
+    # Videos
+    { mime = "video/*", use = "video" },
+
+    # Text files
+    { mime = "text/*", use = "text" },
+    { url = "*.lua", use = "text" },
+    { url = "*.md", use = "text" },
+    { url = "*.txt", use = "text" },
+    { url = "*.conf", use = "text" },
+    { url = "*.ini", use = "text" },
+    { url = "*.toml", use = "text" },
+    { url = "*.yaml", use = "text" },
+    { url = "*.yml", use = "text" },
+    { url = "*.json", use = "text" },
+    { url = "*.list", use = "text" },
+
+    # Archives
+    { mime = "application/zip", use = "archive" },
+    { mime = "application/x-tar", use = "archive" },
+    { mime = "application/x-7z-compressed", use = "archive" },
+
+    # Epub files
+    { url = "*.epub", use = "epub" },
+
+    # Fallback for everything else
+    { url = "*", use = "fallback" },
+]
+
+[preview]
+
+max_width = 1920
+image_quality = 85
+image_delay = 0
+
+[tasks]
+image_bound = [0,0]

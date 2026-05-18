@@ -20,7 +20,8 @@
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0.78);
+    background: rgba(0, 0, 0, 0.85);
+    /* background: rgba(0, 0, 0, 0.78); */
 }
 
 .modules-right {
@@ -94,7 +95,8 @@ button.active {
 }
 
 #battery.critical:not(.charging) {
-    animation: blink-animation 5s steps(20, start) alternate infinite;
+    /* animation: blink-animation 5s steps(20, start) alternate infinite; */
+    color: @crit
 }
 
 #battery.charging {

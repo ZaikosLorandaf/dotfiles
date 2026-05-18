@@ -1,10 +1,116 @@
 #!/bin/sh
+#
+# # Quit if a valid configuration source doesn't exist
+# [ -f "$XDG_CONFIG_HOME/shortcutrc" ] && src="$XDG_CONFIG_HOME/shortcutrc" || exit 1
+#
+# # If you do not want to create a specific file, replace its variable with /dev/null
+# awk -v lf_filepath="${XDG_CONFIG_HOME:-$HOME/.config}/lf/shortcuts" \
+#   -v gtk_filepath="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/bookmarks" \
+#   -v zsh_filepath="${XDG_CACHE_HOME:-$HOME/.cache}/zsh-shortcuts" \
+#   -v env_filepath="${XDG_CACHE_HOME:-$HOME/.cache}/env-shortcuts" \
+#   -v nvim_dropsites_filepath="${XDG_CACHE_HOME:-$HOME/.cache}/shortcuts.lua" \
+#   -v plain_filepath="${XDG_CACHE_HOME:-$HOME/.cache}/plain-shortcuts" \
+#   '
+# BEGIN {
+#   FS=","
+#   OFS=","
+#   max_length = 0
+# }
+#
+# # Function to remove whitespaces from a string
+# function remove_whitespace(str) {
+#   gsub(/[[:space:]]/, "", str)
+#   return str
+# }
+#
+# # Function to expand ~ into full path (ex: /home/...)
+# function fullpath(str) {
+#   gsub(/~\//, ENVIRON["HOME"] "/", str)
+#   return str
+# }
+#
+# {
+#   # Remove comments
+#   gsub(/#.*/, "")
+#
+#   # Remove whitespaces from column 2
+#   $2 = remove_whitespace($2)
+#
+#   # Remove leading and trailing whitespaces from column 3
+#   gsub(/^[[:space:]]+|[[:space:]]+$/, "", $3)
+#
+#   # whenever a line contains only commas, replace it with an empty string
+#   # so that we can check if a line is empty or not
+#   gsub(/^,+$|^,+|,+$|,+,/, "", $0)
+#
+#   # Check if line is empty or contains only whitespace
+#   if (NF) {
+#     # Update max_length if current lhs is longer
+#     if (length($1) > max_length) {
+#       max_length = length($1)
+#     }
+#
+#     # Store the current line for later processing
+#     lines[NR] = $0
+#   }
+# }
+# END {
+#   # Prep for nvim-dropsites:
+#   print "return {" > nvim_dropsites_filepath
+#
+#   for (i = 1; i <= NR; i++) {
+#     split(lines[i], fields, FS)
+#
+#     # Skip processing if necessary fields are empty
+#     if (fields[2] == "" || fields[3] == "") {
+#       continue
+#     }
+#
+#     # Convert column 2 to lowercase
+#     lc_col2 = tolower(fields[2])
+#
+#     # Convert column 2 to uppercase
+#     uc_col2 = toupper(fields[2])
+#
+#     # Write to $XDG_CONFIG_HOME/lf/shortcuts
+#     print "map g" lc_col2 " cd " fields[3] > lf_filepath
+#
+#     # Write to $XDG_CACHE_HOME/zsh-shortcuts
+#     print "g" lc_col2 "() {cd " fields[3] "}" > zsh_filepath
+#
+#     # Write to $XDG_CACHE_HOME/env-shortcuts
+#     print "export G" uc_col2 "=" fields[3] "" > env_filepath
+#
+#     # Write to $XDG_CONFIG_HOME/gtk-3.0/bookmarks
+#     print "file://" fullpath(fields[3]) " " fields[1] > gtk_filepath
+#
+#     # Write to $XDG_CACHE_HOME/nvim-dropsites
+#     split(lines[i], fields, FS)
+#     if (fields[1] != "" && fields[3] != "") {
+#       printf "{ name = \"%s\", dir = \"%s\" },\n", fields[1], fullpath(fields[3]) >> nvim_dropsites_filepath
+#     } else if (fields[3] != "") {
+#       printf "{ name = \"\", dir = \"%s\" },\n", fullpath(fields[3]) >> nvim_dropsites_filepath
+#     }
+#
+#     # Write plain Title + `,` + only if fields[1] is not empty
+#     if (fields[1] != "") {
+#       printf "%-*s : %s\n", max_length, fields[1], fullpath(fields[3]) > plain_filepath
+#     } else if (fields[3] != "") {
+#       printf "%s\n", fullpath(fields[3]) > plain_filepath
+#     }
+#   }
+#
+#   # Closure for nvim-dropsites:
+#   print "}" >> nvim_dropsites_filepath
+# }
+# ' "$src"
 
-# Quit if a valid configuration source doesn't exist
+
+#!/bin/sh
+
 [ -f "$XDG_CONFIG_HOME/shortcutrc" ] && src="$XDG_CONFIG_HOME/shortcutrc" || exit 1
 
-# If you do not want to create a specific file, replace its variable with /dev/null
-awk -v lf_filepath="${XDG_CONFIG_HOME:-$HOME/.config}/lf/shortcuts" \
+awk -v yazi_filepath="${XDG_CONFIG_HOME:-$HOME/.config}/yazi/shortcuts.toml" \
   -v gtk_filepath="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-3.0/bookmarks" \
   -v zsh_filepath="${XDG_CACHE_HOME:-$HOME/.cache}/zsh-shortcuts" \
   -v env_filepath="${XDG_CACHE_HOME:-$HOME/.cache}/env-shortcuts" \
@@ -15,92 +121,74 @@ BEGIN {
   FS=","
   OFS=","
   max_length = 0
+
+  print "[manager]" > yazi_filepath
+  print "prepend_keymap = [" >> yazi_filepath
 }
 
-# Function to remove whitespaces from a string
 function remove_whitespace(str) {
   gsub(/[[:space:]]/, "", str)
   return str
 }
 
-# Function to expand ~ into full path (ex: /home/...)
 function fullpath(str) {
   gsub(/~\//, ENVIRON["HOME"] "/", str)
   return str
 }
 
 {
-  # Remove comments
   gsub(/#.*/, "")
-
-  # Remove whitespaces from column 2
   $2 = remove_whitespace($2)
-
-  # Remove leading and trailing whitespaces from column 3
   gsub(/^[[:space:]]+|[[:space:]]+$/, "", $3)
-
-  # whenever a line contains only commas, replace it with an empty string
-  # so that we can check if a line is empty or not
   gsub(/^,+$|^,+|,+$|,+,/, "", $0)
 
-  # Check if line is empty or contains only whitespace
   if (NF) {
-    # Update max_length if current lhs is longer
-    if (length($1) > max_length) {
+    if (length($1) > max_length)
       max_length = length($1)
-    }
 
-    # Store the current line for later processing
     lines[NR] = $0
   }
 }
+
 END {
-  # Prep for nvim-dropsites:
   print "return {" > nvim_dropsites_filepath
 
   for (i = 1; i <= NR; i++) {
     split(lines[i], fields, FS)
 
-    # Skip processing if necessary fields are empty
-    if (fields[2] == "" || fields[3] == "") {
+    if (fields[2] == "" || fields[3] == "")
       continue
-    }
 
-    # Convert column 2 to lowercase
-    lc_col2 = tolower(fields[2])
+    lc = tolower(fields[2])
+    uc = toupper(fields[2])
 
-    # Convert column 2 to uppercase
-    uc_col2 = toupper(fields[2])
+    # --- Yazi keymaps ---
+    printf "  { on = [\"g\", \"%s\"], run = \"cd %s\" },\n", lc, fields[3] >> yazi_filepath
+    printf "  { on = [\"g\", \"%s\"], run = \"cd %s\" },\n", uc, fields[3] >> yazi_filepath
 
-    # Write to $XDG_CONFIG_HOME/lf/shortcuts
-    print "map g" lc_col2 " cd " fields[3] > lf_filepath
+    # --- zsh ---
+    print "g" lc "() {cd " fields[3] "}" > zsh_filepath
 
-    # Write to $XDG_CACHE_HOME/zsh-shortcuts
-    print "g" lc_col2 "() {cd " fields[3] "}" > zsh_filepath
+    # --- env ---
+    print "export G" uc "=" fields[3] > env_filepath
 
-    # Write to $XDG_CACHE_HOME/env-shortcuts
-    print "export G" uc_col2 "=" fields[3] "" > env_filepath
-
-    # Write to $XDG_CONFIG_HOME/gtk-3.0/bookmarks
+    # --- gtk bookmarks ---
     print "file://" fullpath(fields[3]) " " fields[1] > gtk_filepath
 
-    # Write to $XDG_CACHE_HOME/nvim-dropsites
-    split(lines[i], fields, FS)
-    if (fields[1] != "" && fields[3] != "") {
-      printf "{ name = \"%s\", dir = \"%s\" },\n", fields[1], fullpath(fields[3]) >> nvim_dropsites_filepath
-    } else if (fields[3] != "") {
+    # --- nvim dropsites ---
+    if (fields[1] != "" && fields[3] != "")
+      printf "{ name = \"%s\", dir = \"%s\", keys = \"%s\" },\n", fields[1], fullpath(fields[3]), fields[2] >> nvim_dropsites_filepath
+    else if (fields[3] != "")
       printf "{ name = \"\", dir = \"%s\" },\n", fullpath(fields[3]) >> nvim_dropsites_filepath
-    }
 
-    # Write plain Title + `,` + only if fields[1] is not empty
-    if (fields[1] != "") {
+    # --- plain list ---
+    if (fields[1] != "")
       printf "%-*s : %s\n", max_length, fields[1], fullpath(fields[3]) > plain_filepath
-    } else if (fields[3] != "") {
+    else if (fields[3] != "")
       printf "%s\n", fullpath(fields[3]) > plain_filepath
-    }
   }
 
-  # Closure for nvim-dropsites:
+  print "]" >> yazi_filepath
   print "}" >> nvim_dropsites_filepath
 }
 ' "$src"
